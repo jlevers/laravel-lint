@@ -12,7 +12,7 @@ class LintPublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'lint:publish';
+    protected $signature = 'lint:publish {--overwrite : overwrite existing linting config files}';
 
     /**
      * The console command description.
@@ -29,14 +29,32 @@ class LintPublishCommand extends Command
     public function handle()
     {
         $basePath = $this->laravel->basePath();
+        $overwrite = $this->option('overwrite');
 
-        File::copy(__DIR__ . '/stubs/phpcs.xml', $basePath . '/phpcs.xml');
-        File::copy(__DIR__ . '/stubs/phpmd.xml', $basePath . '/phpmd.xml');
+        if ($overwrite || !$this->_fileExists('phpcs.xml')) {
+            File::copy(__DIR__ . '/stubs/phpcs.xml', $basePath . '/phpcs.xml');
+        }
+        if ($overwrite || !$this->_fileExists('phpmd.xml')) {
+            File::copy(__DIR__ . '/stubs/phpmd.xml', $basePath . '/phpmd.xml');
+        }
         if (File::exists($basePath . '/.git/hooks')) {
-            File::copy(__DIR__ . '/stubs/git-pre-commit', $basePath . '/.git/hooks/pre-commit');
-            File::chmod($basePath . '/.git/hooks/pre-commit', 0755);
+            if ($overwrite || !$this->_fileExists('/.git/hooks/pre-commit')) {
+                File::copy(__DIR__ . '/stubs/git-pre-commit', $basePath . '/.git/hooks/pre-commit');
+                File::chmod($basePath . '/.git/hooks/pre-commit', 0755);    
+            }
         }
 
         $this->info('published successfully.');
+    }
+
+    /**
+     * Check if the file exists in the project base path.
+     *
+     * @param string $relativePath
+     * @return bool
+     */
+    private function _fileExists($relativePath)
+    {
+        return File::exists($this->laravel->basePath() . $relativePath);
     }
 }

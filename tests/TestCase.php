@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelFans\Lint\Tests;
+namespace LaravelLint\Tests;
 
-use LaravelFans\Lint\LintServiceProvider;
+use LaravelLint\LintServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 class TestCase extends OrchestraTestCase

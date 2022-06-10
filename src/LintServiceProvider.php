@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelFans\Lint;
+namespace LaravelLint;
 
 use Illuminate\Support\ServiceProvider;
 

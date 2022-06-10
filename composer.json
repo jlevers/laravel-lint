@@ -1,29 +1,33 @@
 {
-    "name": "laravel-fans/lint",
-    "description": "Laravel Lint Code Style",
+    "name": "jlevers/laravel-lint",
+    "description": "Opinionated Linting for Laravel",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "sinkcup",
             "email": "sinkcup@gmail.com"
+        },
+        {
+            "name": "Jesse Evers",
+            "email": "jesse@jesseevers.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "LaravelFans\\Lint\\": "src"
+            "LaravelLint\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\": "vendor/orchestra/testbench-core/laravel/app/",
-            "LaravelFans\\Lint\\Tests\\": "tests/"
+            "LaravelLint\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelFans\\Lint\\LintServiceProvider"
+                "LaravelLint\\LintServiceProvider"
             ]
         }
     },

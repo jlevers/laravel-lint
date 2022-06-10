@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelFans\Lint\Tests;
+namespace LaravelLint\Tests;
 
 use Illuminate\Support\Facades\File;
 

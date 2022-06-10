@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelFans\Lint;
+namespace LaravelLint;
 
 use FilesystemIterator;
 use Illuminate\Console\Command;

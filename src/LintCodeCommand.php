@@ -1,10 +1,8 @@
 <?php
 
-namespace LaravelFans\Lint;
+namespace LaravelLint;
 
-use FilesystemIterator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 
 class LintCodeCommand extends Command
 {
@@ -37,7 +35,7 @@ class LintCodeCommand extends Command
 
         exec(
             "vendor/bin/$bin --standard=" . $this->option('standard')
-            . ' ' . implode(' ', $files),
+            . ' -s ' . implode(' ', $files),
             $output,
             $code
         );

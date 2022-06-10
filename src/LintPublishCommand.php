@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelFans\Lint;
+namespace LaravelLint;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
